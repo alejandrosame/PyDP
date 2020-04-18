@@ -3,7 +3,7 @@ name: Tests
 on:
   push:
     branches:
-    - master, dev
+    - master, dev, actions
   pull_request:
     types: [opened, synchronize, reopened]
 
@@ -50,7 +50,7 @@ jobs:
         ! ( git diff src |  grep -q ^ ) || exit 1
     - name: Run tests
       run: |
-         python setup.py test 
+         python setup.py test
     - name: Check test coverage
       run: |
          coverage run --source pydp setup.py test
